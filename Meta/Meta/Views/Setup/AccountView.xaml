@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="Meta.Views.Setup.AccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meta.Views.Setup"
+             xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
+             xmlns:vm="clr-namespace:Meta.ViewModels.Setup"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type={x:Type vm:AccountViewModel}}"
+             FocusManager.FocusedElement="{Binding ElementName=UsernameField}">
+    
+    <Border Style="{StaticResource ContentBorder}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource WindowHeadingStyle}" Text="Account Management"/>
+            <TextBlock Style="{StaticResource Heading2Style}" Text="Username and Password"/>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Username:"/>
+                <TextBox x:Name="UsernameField" Style="{StaticResource DefaultFieldStyle}">
+                    <TextBox.Text>
+                        <Binding Path="User.Username" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Password:"/>
+                <PasswordBox Style="{StaticResource DefaultFieldStyle}" flatts:PasswordHelper.Attach="True">
+                    <flatts:PasswordHelper.Password>
+                        <Binding Path="User.Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <flatts:PasswordValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </flatts:PasswordHelper.Password>
+                </PasswordBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Password Again:"/>
+                <PasswordBox Style="{StaticResource DefaultFieldStyle}" flatts:PasswordHelper.Attach="True">
+                    <flatts:PasswordHelper.Password>
+                        <Binding Path="User.PasswordAgain" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <flatts:PasswordValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </flatts:PasswordHelper.Password>
+                </PasswordBox>
+            </DockPanel>
+
+            <TextBlock Foreground="WhiteSmoke" TextWrapping="Wrap" Text="Passwords must be at least 6 characters in length and no more than 32. Passwords must contain at least one digit and uppercase character."/>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                <Button Margin="5,5,5,5" Content="Update Password &amp; Details" Command="{Binding UpdatePasswordCommand}"/>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource Heading2Style}" Text="Personal Information"/>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="First Name:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}">
+                    <TextBox.Text>
+                        <Binding Path="User.GivenName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Middle Initial:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" Text="{Binding User.MiddleInitial}"/>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Last Name:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}">
+                    <TextBox.Text>
+                        <Binding Path="User.FamilyName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Email:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}">
+                    <TextBox.Text>
+                        <Binding Path="User.Email" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:EmailValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Mobile Number:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}">
+                    <TextBox.Text>
+                        <Binding Path="User.MobileNumber" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:MobileNumberValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                <Button Margin="5,5,5,5" Content="Update Details" Command="{Binding UpdateDetailsCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

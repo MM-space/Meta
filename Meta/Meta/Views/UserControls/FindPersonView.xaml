@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Meta.Views.UserControls.FindPersonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meta.Views.UserControls"
+             xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
+             xmlns:vm="clr-namespace:Meta.ViewModels.UserControls"
+             mc:Ignorable="d" 
+             MinWidth="{StaticResource DefaultFieldMinWidth}" MaxWidth="{StaticResource DefaultFieldMaxWidth}"
+             d:DataContext="{d:DesignInstance Type={x:Type vm:FindPersonViewModel}}">
+    
+    <Border>
+        <StackPanel>
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="DCI / Code:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="200">
+                    <TextBox.Text>
+                        <Binding Path="Input" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:DCIOrCodeValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding LookupCommand}" CommandParameter="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                    </TextBox.InputBindings>                    
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="First Name:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="200">
+                    <TextBox.Text>
+                        <Binding Path="Person.GivenName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Middle Initial:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="200" Text="{Binding Person.MiddleInitial}"/>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Last Name:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="200">
+                    <TextBox.Text>
+                        <Binding Path="Person.FamilyName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+
+            <DockPanel Margin="0,5,0,5">
+                <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Email:"/>
+                <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="200">
+                    <TextBox.Text>
+                        <Binding Path="Person.Email" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <flatts:EmailValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </DockPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

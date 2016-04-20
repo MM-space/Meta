@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Meta.Views.UserControls.AddressView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meta.Views.UserControls"
+             xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
+             xmlns:vm="clr-namespace:Meta.ViewModels.UserControls"
+             mc:Ignorable="d"
+             MinWidth="{StaticResource DefaultFieldMinWidth}" MaxWidth="{StaticResource DefaultFieldMaxWidth}"
+             d:DataContext="{d:DesignInstance Type={x:Type vm:AddressViewModel}}">
+    
+    <Border>
+        <StackPanel>
+            <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="Address:"/>
+            <TextBox Style="{StaticResource DefaultFieldStyle}">
+                <TextBox.Text>
+                    <Binding Path="Address.AddressLine1" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="Address Line 2 (optional):"/>
+            <TextBox Style="{StaticResource DefaultFieldStyle}" Text="{Binding Address.AddressLine2}"/>
+
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="City:"/>
+                    <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="150">
+                        <TextBox.Text>
+                            <Binding Path="Address.City" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="State/Provience:"/>
+                    <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="50" HorizontalAlignment="Stretch">
+                        <TextBox.Text>
+                            <Binding Path="Address.StateProvience" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>  
+            </DockPanel>
+
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="Zip Code:"/>
+                    <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="100">
+                        <TextBox.Text>
+                            <Binding Path="Address.ZipCode" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Style="{StaticResource FieldLabelStyle}" TextAlignment="Left" Text="Country/Region:"/>
+                    <TextBox Style="{StaticResource DefaultFieldStyle}" MinWidth="150" HorizontalAlignment="Stretch">
+                        <TextBox.Text>
+                            <Binding Path="Address.CountryRegion" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
