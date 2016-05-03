@@ -3,108 +3,128 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:Meta"
                     xmlns:ctrls="clr-namespace:Flattsware.Controls;assembly=Flattsware"
-                    xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware">
+                    xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
+                    xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit">
 
     <!--Colors-->
-    <SolidColorBrush x:Key="MainColor" Color="#FFF32E2E"/>
-    <SolidColorBrush x:Key="DarkBackground" Color="#1e1e1e"/>
-    <SolidColorBrush x:Key="DarkerBackground" Color="#020201"/>
+    <SolidColorBrush x:Key="MainColor" Color="#FFF32E2E" />
+    <SolidColorBrush x:Key="DarkBackground" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="DarkerBackground" Color="#020201" />
 
     <!--Values-->
     <sys:Double x:Key="FieldColumnStandardWidth">100</sys:Double>
     <sys:Double x:Key="DefaultFieldMinWidth">300</sys:Double>
     <sys:Double x:Key="DefaultFieldMaxWidth">500</sys:Double>
+    <sys:Double x:Key="FilterFieldMinWidth">190</sys:Double>
+    <sys:Double x:Key="FilterFieldMaxWidth">190</sys:Double>
+    <GridLength x:Key="FilterPropertiesColumnWidth">200</GridLength>
+    <GridLength x:Key="FilterOperatorColumnWidth">200</GridLength>
+    <GridLength x:Key="FilterValueColumnWidth">200</GridLength>
 
     <!--Validation-->
     <ControlTemplate x:Key="ValidationTemplate">
         <Border BorderBrush="{StaticResource MainColor}" BorderThickness="2">
-            <AdornedElementPlaceholder/>
+            <AdornedElementPlaceholder />
         </Border>
     </ControlTemplate>
 
     <!--Windows-->
     <Style x:Key="DialogBoxStyle" TargetType="Window">
-        <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-        <Setter Property="Background" Value="{StaticResource DarkBackground}"/>
-        <Setter Property="flatts:DialogCloser.DialogResult" Value="{Binding DialogResult}"/>
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        <Setter Property="Background" Value="{StaticResource DarkBackground}" />
+        <Setter Property="flatts:DialogCloser.DialogResult" Value="{Binding DialogResult}" />
     </Style>
 
     <!--Borders-->
     <Style x:Key="WindowBorder" TargetType="Border">
-        <Setter Property="BorderBrush" Value="LightGray"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
 
     <Style x:Key="ContentBorder" TargetType="Border">
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="10" />
     </Style>
 
     <Style x:Key="UserControlDefaultBorder" TargetType="Border">
-        <Setter Property="Background" Value="#342c33"/>
+        <Setter Property="Background" Value="#342c33" />
     </Style>
 
     <!--Textblock-->
     <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="TextAlignment" Value="Right" />
     </Style>
 
     <Style x:Key="LinkLabelStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
-        <Setter Property="TextDecorations" Value="Underline"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{StaticResource MainColor}" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style x:Key="Heading2Style" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Foreground" Value="{StaticResource MainColor}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="0,10,0,0" />
     </Style>
 
     <Style x:Key="WindowHeadingStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="{StaticResource MainColor}" />
+        <Setter Property="FontSize" Value="24" />
     </Style>
 
     <Style x:Key="UserControlHeadingStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <Style x:Key="GridColumnHeaderStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="Background" Value="{StaticResource MainColor}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="TextAlignment" Value="Center" />
     </Style>
 
     <!--Labels-->
     <Style TargetType="Label">
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="Foreground" Value="WhiteSmoke" />
     </Style>
 
     <!--Seperators-->
     <Style x:Key="UserControlSeperatorStyle" TargetType="Separator">
-        <Setter Property="MinWidth" Value="250"/>
-        <Setter Property="Margin" Value="0,5,0,5"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="MinWidth" Value="250" />
+        <Setter Property="Margin" Value="0,5,0,5" />
+        <Setter Property="Foreground" Value="WhiteSmoke" />
     </Style>
-    
+
     <!--Controls-->
     <Style x:Key="DefaultFieldStyle" TargetType="Control">
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Height" Value="28"/>
-        <Setter Property="MinWidth" Value="{StaticResource DefaultFieldMinWidth}"/>
-        <Setter Property="MaxWidth" Value="{StaticResource DefaultFieldMaxWidth}"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ValidationTemplate}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="MinWidth" Value="{StaticResource DefaultFieldMinWidth}" />
+        <Setter Property="MaxWidth" Value="{StaticResource DefaultFieldMaxWidth}" />
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ValidationTemplate}" />
 
         <Style.Triggers>
             <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                    Path=(Validation.Errors)[0].ErrorContent}" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="FilterFieldStyle" TargetType="Control" BasedOn="{StaticResource DefaultFieldStyle}">
+        <Setter Property="MinWidth" Value="{StaticResource FilterFieldMinWidth}" />
+        <Setter Property="Width" Value="{StaticResource FilterFieldMaxWidth}" />
+        <Setter Property="MaxWidth" Value="{StaticResource FilterFieldMaxWidth}" />
     </Style>
 
     <!--Buttons-->
@@ -116,14 +136,14 @@
                         <Border x:Name="border" CornerRadius="5">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#FFFF7B7B" Offset="0.0"/>
-                                    <GradientStop Color="#FFE41212" Offset="1.0"/>
+                                    <GradientStop Color="#FFFF7B7B" Offset="0.0" />
+                                    <GradientStop Color="#FFE41212" Offset="1.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"
                                               TextElement.FontWeight="Bold"
-                                              Margin="4"/>
+                                              Margin="4" />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -131,8 +151,8 @@
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FFF9B9B9" Offset="0.0"/>
-                                        <GradientStop Color="#FF913434" Offset="1.0"/>
+                                        <GradientStop Color="#FFF9B9B9" Offset="0.0" />
+                                        <GradientStop Color="#FF913434" Offset="1.0" />
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -141,69 +161,78 @@
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FFF9B9B9" Offset="0.0"/>
-                                        <GradientStop Color="#FF913434" Offset="1.0"/>
+                                        <GradientStop Color="#FFF9B9B9" Offset="0.0" />
+                                        <GradientStop Color="#FF913434" Offset="1.0" />
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            <Setter Property="Opacity" TargetName="grid" Value="0.25" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
-    <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button"/>
+    <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button" />
+
+    <Style x:Key="HamburgerButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
 
     <!--Navigation Bars-->
-    <Style x:Key="NavigationBarItemStyleKey" TargetType="{x:Type ctrls:NavigationBarItem}"  >
+    <Style x:Key="NavigationBarItemStyleKey" TargetType="{x:Type ctrls:NavigationBarItem}">
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <VisualBrush>
                     <VisualBrush.Visual>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
                             <Path x:Name="ColoredBorderLeft" SnapsToDevicePixels="True"
-                                Data="M0,0 L0,0 1,0.5 L1,0.5 0,1" Fill="#FF929292" Stretch="Fill" Grid.RowSpan="2"/>
+                                  Data="M0,0 L0,0 1,0.5 L1,0.5 0,1" Fill="#FF929292" Stretch="Fill" Grid.RowSpan="2" />
                             <Path x:Name="ColoredBorderRight" SnapsToDevicePixels="True"
-                                Data="M1,0 L1,0 0,0.5 L0,0.5 1,1" Fill="#FF5d5d5d" Stretch="Fill" Grid.Column="1" Grid.RowSpan="2"/>
+                                  Data="M1,0 L1,0 0,0.5 L0,0.5 1,1" Fill="#FF5d5d5d" Stretch="Fill" Grid.Column="1"
+                                  Grid.RowSpan="2" />
                             <Path x:Name="ColoredBorderTop" SnapsToDevicePixels="True"
-                                Data="M0,0 L0,0 0.5,1 L0.5,1 1,0" Fill="#FF797979" Stretch="Fill" Grid.ColumnSpan="2"/>
+                                  Data="M0,0 L0,0 0.5,1 L0.5,1 1,0" Fill="#FF797979" Stretch="Fill" Grid.ColumnSpan="2" />
                             <Path x:Name="ColoredBorderBottom" SnapsToDevicePixels="True"
-                                Data="M0,1 L0,1 0.5,0 L0.5,0 1,1" Fill="#FF575757" Stretch="Fill" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                  Data="M0,1 L0,1 0.5,0 L0.5,0 1,1" Fill="#FF575757" Stretch="Fill" Grid.Row="1"
+                                  Grid.ColumnSpan="2" />
                         </Grid>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Setter.Value>
         </Setter>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="14" />
     </Style>
 
     <Style TargetType="{x:Type ctrls:HorizonalNavigationBar}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource NavigationBarItemStyleKey}"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource NavigationBarItemStyleKey}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <StackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                    <StackPanel IsItemsHost="True" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
@@ -212,31 +241,32 @@
                 <ControlTemplate TargetType="{x:Type ctrls:HorizonalNavigationBar}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Border HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Transparent" CornerRadius="7" Padding="2">
+                        <Border HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Transparent"
+                                CornerRadius="7" Padding="2">
                             <Grid>
                                 <!-- Rounded mask (stretches to fill Grid) -->
-                                <Border Name="mask" Background="White" CornerRadius="5"/>
+                                <Border Name="mask" Background="White" CornerRadius="5" />
 
                                 <!-- Main content container -->
                                 <StackPanel>
                                     <!-- Use a VisualBrush of 'mask' as the opacity mask -->
                                     <StackPanel.OpacityMask>
-                                        <VisualBrush Visual="{Binding ElementName=mask}"/>
+                                        <VisualBrush Visual="{Binding ElementName=mask}" />
                                     </StackPanel.OpacityMask>
 
-                                    <ItemsPresenter></ItemsPresenter>
+                                    <ItemsPresenter />
 
                                 </StackPanel>
 
                             </Grid>
                             <Border.Effect>
-                                <DropShadowEffect Color="#FFcecece" Opacity="0.6" ShadowDepth="3" BlurRadius="5"/>
+                                <DropShadowEffect Color="#FFcecece" Opacity="0.6" ShadowDepth="3" BlurRadius="5" />
                             </Border.Effect>
                         </Border>
                     </Grid>
@@ -246,13 +276,13 @@
     </Style>
 
     <Style x:Key="NavigationButtonStyle_Active" TargetType="Button">
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="{StaticResource DarkerBackground}"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="MinWidth" Value="150"/>
-        <Setter Property="MinHeight" Value="50"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{StaticResource DarkerBackground}" />
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="MinWidth" Value="150" />
+        <Setter Property="MinHeight" Value="50" />
+        <Setter Property="FontSize" Value="16" />
     </Style>
 
     <Style x:Key="NavigationButtonStyle_Inactive" TargetType="Button">
@@ -263,14 +293,14 @@
                         <Border x:Name="border" CornerRadius="5">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#FFFF7B7B" Offset="0.0"/>
-                                    <GradientStop Color="#FFE41212" Offset="1.0"/>
+                                    <GradientStop Color="#FFFF7B7B" Offset="0.0" />
+                                    <GradientStop Color="#FFE41212" Offset="1.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          TextElement.FontWeight="Bold"
-                                          Margin="4"/>
+                                              VerticalAlignment="Center"
+                                              TextElement.FontWeight="Bold"
+                                              Margin="4" />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -278,8 +308,8 @@
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FFF9B9B9" Offset="0.0"/>
-                                        <GradientStop Color="#FF913434" Offset="1.0"/>
+                                        <GradientStop Color="#FFF9B9B9" Offset="0.0" />
+                                        <GradientStop Color="#FF913434" Offset="1.0" />
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -288,53 +318,155 @@
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FFF9B9B9" Offset="0.0"/>
-                                        <GradientStop Color="#FF913434" Offset="1.0"/>
+                                        <GradientStop Color="#FFF9B9B9" Offset="0.0" />
+                                        <GradientStop Color="#FF913434" Offset="1.0" />
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            <Setter Property="Opacity" TargetName="grid" Value="0.25" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="Margin" Value="2,4,2,4"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="Margin" Value="2,4,2,4" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style x:Key="NavigationButtonTextStyle" TargetType="TextBlock">
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Margin" Value="0,0,8,0"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="0,0,8,0" />
     </Style>
 
     <Style x:Key="NavigationButtonHotkeyStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Margin" Value="0,0,4,0"/>
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="0,0,4,0" />
     </Style>
 
     <!--Data Templates-->
     <DataTemplate x:Key="VerticalNavigationBarTemplate">
         <Grid>
-            <Button Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                    CommandParameter="{Binding }"
-                    Style="{StaticResource NavigationButtonStyle_Active}">
+            <Button
+                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                CommandParameter="{Binding }"
+                Style="{StaticResource NavigationButtonStyle_Active}">
                 <Grid MinHeight="50" MinWidth="150">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Label}"/>
-                    <TextBlock Foreground="Gray" FontSize="10" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding HotKeyLabel}"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Label}" />
+                    <TextBlock Foreground="Gray" FontSize="10" Margin="3" HorizontalAlignment="Left"
+                               VerticalAlignment="Top" Text="{Binding HotKeyLabel}" />
                 </Grid>
             </Button>
         </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PropertyFilterItemTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource FilterPropertiesColumnWidth}" />
+                <ColumnDefinition Width="{StaticResource FilterOperatorColumnWidth}" />
+                <ColumnDefinition Width="{StaticResource FilterValueColumnWidth}" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Style="{StaticResource FieldLabelStyle}" Text="{Binding Name}" />
+
+            <ContentControl Grid.Column="1">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsTypeString}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource OperatorTypeStringDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeGuid}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource OperatorTypeGuidDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeEnum}" Value="True">
+                                <Setter Property="ContentTemplate" Value="{DynamicResource OperatorTypeEnumDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeDateTime}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource OperatorTypeDateTimeDataTemplate}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            
+            <ContentControl Grid.Column="2">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsTypeString}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource EntryTypeStringDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeGuid}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource EntryTypeStringDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeEnum}" Value="True">
+                                <Setter Property="ContentTemplate" Value="{DynamicResource EntryTypeEnumDataTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeDateTime}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource EntryTypeDateTimeDataTemplate}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+    </DataTemplate>
+
+    <!-- Entry -->
+    <DataTemplate x:Key="EntryTypeStringDataTemplate">
+        <TextBox Style="{DynamicResource FilterFieldStyle}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="EntryTypeEnumDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="EntryTypeDateTimeDataTemplate">
+        <toolkit:DateTimeUpDown Style="{DynamicResource FilterFieldStyle}" />
+    </DataTemplate>
+    
+    <!-- Operators -->
+    <DataTemplate x:Key="OperatorTypeStringDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="OperatorTypeGuidDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="OperatorTypeEnumDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="OperatorTypeDateTimeDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
     </DataTemplate>
 
 </ResourceDictionary>

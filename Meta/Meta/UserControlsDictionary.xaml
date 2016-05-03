@@ -1,43 +1,35 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Meta"
-                    xmlns:vm="clr-namespace:Meta.ViewModels"
                     xmlns:v="clr-namespace:Meta.Views"
-                    xmlns:setupvm="clr-namespace:Meta.ViewModels.Setup"
                     xmlns:setupv="clr-namespace:Meta.Views.Setup"
-                    xmlns:usercontrolsvm="clr-namespace:Meta.ViewModels.UserControls"
                     xmlns:usercontrolsv="clr-namespace:Meta.Views.UserControls">
-    
-    <DataTemplate DataType="{x:Type vm:HomeViewModel}">
-        <v:HomeView/>
+
+    <DataTemplate DataType="{x:Type v:HomeViewModel}">
+        <v:HomeView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type setupvm:AccountViewModel}">
-        <setupv:AccountView/>
+    <DataTemplate DataType="{x:Type setupv:AccountViewModel}">
+        <setupv:AccountView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type setupvm:DatabaseViewModel}">
-        <setupv:DatabaseView/>
+    <DataTemplate DataType="{x:Type setupv:DatabaseViewModel}">
+        <setupv:DatabaseView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type setupvm:LedgerViewModel}">
-        <setupv:LedgerView/>
+    <DataTemplate DataType="{x:Type setupv:LedgerViewModel}">
+        <setupv:LedgerView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type setupvm:AdminViewModel}">
-        <setupv:AdminView/>
+    <DataTemplate DataType="{x:Type setupv:AdminViewModel}">
+        <setupv:AdminView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type usercontrolsvm:AddOrganizerViewModel}">
-        <usercontrolsv:AddOrganizerView/>
+    <DataTemplate DataType="{x:Type usercontrolsv:AddOrganizerViewModel}">
+        <usercontrolsv:AddOrganizerView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type usercontrolsvm:AddressViewModel}">
-        <usercontrolsv:AddressView/>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type usercontrolsvm:FindPersonViewModel}">
-        <usercontrolsv:FindPersonView/>
+    <DataTemplate DataType="{x:Type usercontrolsv:ViewObjectsViewModel}">
+        <usercontrolsv:ViewObjectsView />
     </DataTemplate>
 
 </ResourceDictionary>

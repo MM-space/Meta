@@ -1,32 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Flattsware;
+﻿using Flattsware;
 
 namespace Meta.Views.Account
 {
     /// <summary>
-    /// Interaction logic for ChangePasswordWindow.xaml
+    ///     Interaction logic for ChangePasswordWindow.xaml
     /// </summary>
-    public partial class ChangePasswordWindow : Window
+    public partial class ChangePasswordWindow
     {
-        ViewModels.Account.ChangePasswordViewModel viewModel = new ViewModels.Account.ChangePasswordViewModel();
+        private readonly ChangePasswordViewModel _viewModel = new ChangePasswordViewModel();
 
         public ChangePasswordWindow(User user)
         {
             InitializeComponent();
-            viewModel.User = user;
-            DataContext = viewModel;
+            _viewModel.User = user;
+            DataContext = _viewModel;
         }
     }
 }

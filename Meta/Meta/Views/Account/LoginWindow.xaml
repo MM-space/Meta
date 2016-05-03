@@ -5,23 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meta.Views.Account"
         xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
-        xmlns:vm="clr-namespace:Meta.ViewModels.Account"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type={x:Type vm:LoginWindowViewModel}}"
-        Title="{Binding Title}" Style="{StaticResource DialogBoxStyle}" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=UsernameField}">
+        d:DataContext="{d:DesignInstance Type={x:Type local:LoginWindowViewModel}}"
+        Title="{Binding Title}" Style="{StaticResource DialogBoxStyle}" WindowStartupLocation="CenterScreen"
+        FocusManager.FocusedElement="{Binding ElementName=UsernameField}">
 
     <Border Style="{StaticResource WindowBorder}">
         <Border Style="{StaticResource ContentBorder}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <DockPanel Grid.Column="0">
                     <StackPanel>
-                        <Image Height="95" Source="/Meta;component/Images/logo.png"/>
-                        <Label HorizontalAlignment="Center" FontSize="18" FontFamily="Segoe WP Black" Content="Magic Event &amp; Tournament Application"/>
+                        <Image Height="95" Source="/Meta;component/Images/logo.png" />
+                        <Label HorizontalAlignment="Center" FontSize="18" FontFamily="Segoe WP Black"
+                               Content="Magic Event &amp; Tournament Application" />
                     </StackPanel>
                 </DockPanel>
 
@@ -32,37 +33,46 @@
                                 <RowDefinition>
                                     <RowDefinition.Style>
                                         <Style TargetType="RowDefinition">
-                                            <Setter Property="Height" Value="*"/>
+                                            <Setter Property="Height" Value="*" />
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding User.IsSuperUser}" Value="True">
-                                                    <Setter Property="Height" Value="0"/>
+                                                    <Setter Property="Height" Value="0" />
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </RowDefinition.Style>
                                 </RowDefinition>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
 
                             <DockPanel Grid.Row="0" Width="300">
-                                <Label Foreground="Black" Content="Organizer" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="80"/>
-                                <ComboBox BorderBrush="WhiteSmoke" Margin="5" DisplayMemberPath="Key" SelectedValuePath="Value" SelectedValue="{Binding Organizer}" ItemsSource="{Binding Organizers}"/>
+                                <Label Foreground="Black" Content="Organizer" FontWeight="Bold" FontSize="14"
+                                       VerticalAlignment="Center" Width="80" />
+                                <ComboBox BorderBrush="WhiteSmoke" Margin="5" DisplayMemberPath="Key"
+                                          SelectedValuePath="Value" SelectedValue="{Binding Organizer}"
+                                          ItemsSource="{Binding Organizers}" />
                             </DockPanel>
 
                             <DockPanel Grid.Row="1" Width="300">
-                                <Label Foreground="Black" Content="Username" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="80"/>
-                                <ComboBox x:Name="UsernameField" Style="{StaticResource DefaultFieldStyle}" BorderBrush="WhiteSmoke" Margin="5" DisplayMemberPath="Key" SelectedValuePath="Value" SelectedValue="{Binding User}" ItemsSource="{Binding Users}"/>
+                                <Label Foreground="Black" Content="Username" FontWeight="Bold" FontSize="14"
+                                       VerticalAlignment="Center" Width="80" />
+                                <ComboBox x:Name="UsernameField" Style="{StaticResource DefaultFieldStyle}"
+                                          BorderBrush="WhiteSmoke" Margin="5" DisplayMemberPath="Key"
+                                          SelectedValuePath="Value" SelectedValue="{Binding User}"
+                                          ItemsSource="{Binding Users}" />
                             </DockPanel>
 
                             <DockPanel Grid.Row="2" Width="300">
-                                <Label Foreground="Black" Content="Password" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="80"/>
-                                <PasswordBox Style="{StaticResource DefaultFieldStyle}" BorderBrush="WhiteSmoke" Margin="5" flatts:PasswordHelper.Attach="True">
+                                <Label Foreground="Black" Content="Password" FontWeight="Bold" FontSize="14"
+                                       VerticalAlignment="Center" Width="80" />
+                                <PasswordBox Style="{StaticResource DefaultFieldStyle}" BorderBrush="WhiteSmoke"
+                                             Margin="5" flatts:PasswordHelper.Attach="True">
                                     <flatts:PasswordHelper.Password>
-                                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
                                     </flatts:PasswordHelper.Password>
                                     <PasswordBox.InputBindings>
-                                        <KeyBinding Command="{Binding LogInCommand}" Key="Enter"/>
+                                        <KeyBinding Command="{Binding LogInCommand}" Key="Enter" />
                                     </PasswordBox.InputBindings>
                                 </PasswordBox>
                             </DockPanel>
@@ -70,26 +80,28 @@
                     </Border>
 
                     <DockPanel Grid.Row="2" LastChildFill="False">
-                        <Button DockPanel.Dock="Right" Margin="0,5,0,5" Content="Log In" Command="{Binding LogInCommand}"/>
+                        <Button DockPanel.Dock="Right" Margin="0,5,0,5" Content="Log In"
+                                Command="{Binding LogInCommand}" />
                     </DockPanel>
 
                     <DockPanel Grid.Row="3" LastChildFill="False">
                         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                             <TextBlock Margin="5" Text="Database Details" Style="{StaticResource LinkLabelStyle}">
                                 <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding ShowDatabaseDetailsCommand}" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding ShowDatabaseDetailsCommand}"
+                                                  MouseAction="LeftClick" />
                                 </TextBlock.InputBindings>
                             </TextBlock>
 
                             <TextBlock Margin="5" Text="Create Account" Style="{StaticResource LinkLabelStyle}">
                                 <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding CreateAccountCommand}" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding CreateAccountCommand}" MouseAction="LeftClick" />
                                 </TextBlock.InputBindings>
                             </TextBlock>
 
                             <TextBlock Margin="5" Text="Forgot Password" Style="{StaticResource LinkLabelStyle}">
                                 <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding ForgotPasswordCommand}" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding ForgotPasswordCommand}" MouseAction="LeftClick" />
                                 </TextBlock.InputBindings>
                             </TextBlock>
                         </StackPanel>
@@ -99,5 +111,3 @@
         </Border>
     </Border>
 </Window>
-    
-    

@@ -3,23 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Meta.Views"
         xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
         mc:Ignorable="d"
-        Title="Database Details - Meta" Style="{StaticResource DialogBoxStyle}" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=ServerIPField}">
+        Title="Database Details - Meta" Style="{StaticResource DialogBoxStyle}" WindowStartupLocation="CenterScreen"
+        FocusManager.FocusedElement="{Binding ElementName=ServerIpField}">
 
     <Border Style="{StaticResource WindowBorder}">
         <Border Style="{StaticResource ContentBorder}">
             <StackPanel>
-                <TextBlock Style="{StaticResource WindowHeadingStyle}" Text="Database Connection Details:"/>
+                <TextBlock Style="{StaticResource WindowHeadingStyle}" Text="Database Connection Details:" />
 
                 <DockPanel Margin="0,5,0,5">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Server IP:"/>
-                    <TextBox x:Name="ServerIPField" Style="{StaticResource DefaultFieldStyle}">
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100"
+                               Text="Server IP:" />
+                    <TextBox x:Name="ServerIpField" Style="{StaticResource DefaultFieldStyle}">
                         <TextBox.Text>
                             <Binding Path="Database.ServerIP" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <flatts:ServerIPValidationRule ValidationStep="RawProposedValue"/>
+                                    <flatts:ServerIpValidationRule ValidationStep="RawProposedValue" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -27,12 +28,13 @@
                 </DockPanel>
 
                 <DockPanel Margin="0,5,0,5">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Database Name:"/>
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100"
+                               Text="Database Name:" />
                     <TextBox Style="{StaticResource DefaultFieldStyle}">
                         <TextBox.Text>
                             <Binding Path="Database.Name" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -40,21 +42,23 @@
                 </DockPanel>
 
                 <DockPanel Margin="0,5,0,5">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="Password:"/>
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100"
+                               Text="Password:" />
                     <PasswordBox Style="{StaticResource DefaultFieldStyle}" flatts:PasswordHelper.Attach="True">
                         <flatts:PasswordHelper.Password>
-                            <Binding Path="Database.Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                            <Binding Path="Database.Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
                         </flatts:PasswordHelper.Password>
                     </PasswordBox>
                 </DockPanel>
 
                 <DockPanel Margin="0,5,0,5">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100" Text="UserID:"/>
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Width="100"
+                               Text="UserID:" />
                     <TextBox Style="{StaticResource DefaultFieldStyle}">
                         <TextBox.Text>
                             <Binding Path="Database.UserID" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                    <flatts:NotEmptyStringRule ValidationStep="RawProposedValue" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -63,8 +67,8 @@
 
                 <DockPanel LastChildFill="False">
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                        <Button Margin="5,5,5,5" Content="Save Details" Command="{Binding UpdateDetailsCommand}"/>
-                        <Button Margin="0,5,0,5" Content="Cancel" Command="{Binding CloseCommand}"/>
+                        <Button Margin="5,5,5,5" Content="Save Details" Command="{Binding UpdateDetailsCommand}" />
+                        <Button Margin="0,5,0,5" Content="Cancel" Command="{Binding CloseCommand}" />
                     </StackPanel>
                 </DockPanel>
             </StackPanel>
