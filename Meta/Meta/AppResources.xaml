@@ -387,31 +387,28 @@
                                 <Setter Property="ContentTemplate"
                                         Value="{DynamicResource OperatorTypeStringDataTemplate}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding IsTypeGuid}" Value="True">
-                                <Setter Property="ContentTemplate"
-                                        Value="{DynamicResource OperatorTypeGuidDataTemplate}" />
-                            </DataTrigger>
                             <DataTrigger Binding="{Binding IsTypeEnum}" Value="True">
-                                <Setter Property="ContentTemplate" Value="{DynamicResource OperatorTypeEnumDataTemplate}" />
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource OperatorTypeEnumDataTemplate}" />
                             </DataTrigger>
                             <DataTrigger Binding="{Binding IsTypeDateTime}" Value="True">
                                 <Setter Property="ContentTemplate"
                                         Value="{DynamicResource OperatorTypeDateTimeDataTemplate}" />
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeNumber}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource OperatorTypeNumberDataTemplate}" />
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
-            
+
             <ContentControl Grid.Column="2">
                 <ContentControl.Style>
                     <Style TargetType="ContentControl">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsTypeString}" Value="True">
-                                <Setter Property="ContentTemplate"
-                                        Value="{DynamicResource EntryTypeStringDataTemplate}" />
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding IsTypeGuid}" Value="True">
                                 <Setter Property="ContentTemplate"
                                         Value="{DynamicResource EntryTypeStringDataTemplate}" />
                             </DataTrigger>
@@ -422,6 +419,10 @@
                                 <Setter Property="ContentTemplate"
                                         Value="{DynamicResource EntryTypeDateTimeDataTemplate}" />
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTypeNumber}" Value="True">
+                                <Setter Property="ContentTemplate"
+                                        Value="{DynamicResource EntryTypeNumberDataTemplate}" />
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -431,42 +432,57 @@
 
     <!-- Entry -->
     <DataTemplate x:Key="EntryTypeStringDataTemplate">
-        <TextBox Style="{DynamicResource FilterFieldStyle}" />
+        <TextBox Style="{DynamicResource FilterFieldStyle}"
+                 DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                 Text="{Binding Input}" />
     </DataTemplate>
 
     <DataTemplate x:Key="EntryTypeEnumDataTemplate">
         <ComboBox Style="{DynamicResource FilterFieldStyle}"
                   DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                  ItemsSource="{Binding EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" />
+                  ItemsSource="{Binding EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" 
+                  SelectedItem="{Binding Input}"/>
     </DataTemplate>
 
     <DataTemplate x:Key="EntryTypeDateTimeDataTemplate">
-        <toolkit:DateTimeUpDown Style="{DynamicResource FilterFieldStyle}" />
+        <toolkit:DateTimeUpDown Style="{DynamicResource FilterFieldStyle}"
+                                DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}" 
+                                Value="{Binding Input}"/>
     </DataTemplate>
-    
+
+    <DataTemplate x:Key="EntryTypeNumberDataTemplate">
+        <toolkit:LongUpDown Style="{DynamicResource FilterFieldStyle}"
+                            DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}" 
+                            Value="{Binding Input}"/>
+    </DataTemplate>
+
     <!-- Operators -->
     <DataTemplate x:Key="OperatorTypeStringDataTemplate">
         <ComboBox Style="{DynamicResource FilterFieldStyle}"
                   DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
-    </DataTemplate>
-
-    <DataTemplate x:Key="OperatorTypeGuidDataTemplate">
-        <ComboBox Style="{DynamicResource FilterFieldStyle}"
-                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key"
+                  SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
     </DataTemplate>
 
     <DataTemplate x:Key="OperatorTypeEnumDataTemplate">
         <ComboBox Style="{DynamicResource FilterFieldStyle}"
                   DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key"
+                  SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
     </DataTemplate>
 
     <DataTemplate x:Key="OperatorTypeDateTimeDataTemplate">
         <ComboBox Style="{DynamicResource FilterFieldStyle}"
                   DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key"
+                  SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="OperatorTypeNumberDataTemplate">
+        <ComboBox Style="{DynamicResource FilterFieldStyle}"
+                  DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                  ItemsSource="{Binding Operator.EnumBinding}" DisplayMemberPath="Value" SelectedValuePath="Key"
+                  SelectedValue="{Binding Operator.Default, Mode=OneTime}" />
     </DataTemplate>
 
 </ResourceDictionary>

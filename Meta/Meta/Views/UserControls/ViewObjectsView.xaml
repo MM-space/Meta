@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Meta.Views.UserControls.ViewObjectsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Meta.Views.UserControls"
+             xmlns:flatts="clr-namespace:Flattsware;assembly=Flattsware"
+             xmlns:helpers="clr-namespace:Flattsware.Helpers;assembly=Flattsware"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type={x:Type local:ViewObjectsViewModel}}">
+
+    <Border Style="{StaticResource UserControlDefaultBorder}">
+        <Border Style="{StaticResource ContentBorder}">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Style="{StaticResource UserControlHeadingStyle}"
+                           Text="{Binding PluralOfObjectTypeName, StringFormat=View {0}}" />
+                <Separator DockPanel.Dock="Top" Style="{StaticResource UserControlSeperatorStyle}" />
+
+                <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="5">
+                    <Button DockPanel.Dock="Left" Command="{Binding ToggleVisibleCommand}" Style="{StaticResource HamburgerButtonStyle}">
+                        <Viewbox Width="24" Height="24">
+                            <ContentPresenter Content="{DynamicResource Hamburger16X}" />
+                        </Viewbox>
+                    </Button>
+
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource FieldLabelStyle}" Text="Filter" />
+
+                    <Button DockPanel.Dock="Right" Command="{Binding DeleteFilterCommand}" Style="{StaticResource HamburgerButtonStyle}">
+                        <Viewbox Width="24" Height="24">
+                            <ContentPresenter Content="{DynamicResource DeleteFilter16X}" />
+                        </Viewbox>
+                    </Button>
+                </DockPanel>
+
+                <Grid DockPanel.Dock="Top" Visibility="{Binding Path=FilterVisible, Converter={StaticResource BoolToVis}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource FilterPropertiesColumnWidth}" />
+                        <ColumnDefinition Width="{StaticResource FilterOperatorColumnWidth}" />
+                        <ColumnDefinition Width="{StaticResource FilterValueColumnWidth}" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition />
+                        <RowDefinition Height="38" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource GridColumnHeaderStyle}" Text="Property" />
+                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource GridColumnHeaderStyle}" Text="Operator" />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource GridColumnHeaderStyle}" Text="Value" />
+                    
+                    <ItemsControl Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Properties}" ItemTemplate="{StaticResource PropertyFilterItemTemplate}"/>
+                    
+                    <Button Grid.Column="2" Grid.Row="2" Margin="5" Command="{Binding ApplyFilterCommand}" Width="50" HorizontalAlignment="Right" Content="Apply"/>
+                </Grid>
+                
+                <DataGrid ItemsSource="{Binding FilteredObjects}" AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn"/>
+            </DockPanel>
+        </Border>
+    </Border>
+</UserControl>

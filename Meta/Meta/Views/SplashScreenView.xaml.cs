@@ -20,6 +20,7 @@ namespace Meta.Views
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             var loaded = await _viewModel.OnLoad();
 
             if (loaded)
